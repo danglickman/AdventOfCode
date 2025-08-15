@@ -1,21 +1,18 @@
-import re
+from collections import Counter
 
 lbound, ubound = (int(x) for x in open('input', 'r').read().strip().split('-'))
 
-double = re.compile(r'(.)\1')
+p1total = 0
+p2total = 0
+## monotonicity means repeated digits are consecutive
+for i in range(lbound, ubound + 1):
+    x = str(i)
+    if  x == ''.join(sorted(x)):
+        c = Counter(x)
+        if max(c.values()) >= 2:
+            p1total += 1
+            if 2 in Counter(x).values():
+                p2total += 1
 
-def meets_criteria(num):
-    num_str = str(num)
-    for i in range(len(num_str)-1):
-        if int(num_str[i+1])<int(num_str[i]):
-            return False
-
-    if double.search(num_str):
-        return True
-    return False
-
-total = 0
-for i in range(int(lbound), int(ubound)+1):
-    if meets_criteria(i):
-        total += 1
-print("Part 1:", total)
+print("Part 1:", p1total)
+print("Part 2:", p2total)
