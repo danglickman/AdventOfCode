@@ -1,16 +1,3 @@
-instructions = [int(x.strip()) for x in open('input', 'r').read().strip().split(',')]
-opcode_names = {
-    1:"add",
-    2:"sub",
-    3:"inp",
-    4:"out",
-    5:"jnz",
-    6:"jz",
-    7:"lt",
-    8:"eq",
-    99:"hlt"
-}
-
 class IntCode(object):
     def __init__(self, program, input_function = input, output_function = print):
         self.program = program
@@ -29,6 +16,7 @@ class IntCode(object):
         ]
         self.args = [0,0,0]
         self.input_function = input_function
+        self.output_function = output_function
 
 
     def reset_memory(self):
@@ -76,7 +64,7 @@ class IntCode(object):
                     self.mem[self.mem[self.ip+1]] = int(self.input_function())
                     self.ip += 2
                 case 4:
-                    print("Out: ", self.args[0])
+                    self.output_function(self.args[0])
                     self.ip += 2
                 case 5:
                     if self.args[0] != 0:
@@ -96,8 +84,3 @@ class IntCode(object):
                     self.ip += 4
             # print("new ip", self.ip)
             # print("New STATE", self.mem)
-
-computer = IntCode(instructions)
-
-computer.run()
-
