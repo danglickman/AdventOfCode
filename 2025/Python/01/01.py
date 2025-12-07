@@ -10,7 +10,7 @@ for op in data:
         direction = 1
     rot = int(op[1:])
 
-    # transformation to avoid dealing with Python's negative integer division behavior
+    # transformation to avoid dealing with negative integer divmod
     pos = (direction * pos) % 100
 
     pos += rot

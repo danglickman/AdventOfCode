@@ -22,8 +22,6 @@ for beg, end in ranges:
     beg = int(beg)
     end = int(end)
     for i in range(beg, end+1):
-        s = str(i)
-        l = len(s)
         if not is_valid(i):
             p2 += i
 
