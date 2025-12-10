@@ -8,7 +8,8 @@ boxes = [tuple(int(n) for n in row.split(',')) for row in data]
 
 def distance(c):
     b1, b2 = c
-    return (b1[0] - b2[0])**2 + (b1[1] - b2[1])**2 + (b1[2] - b2[2])**2
+    return math.dist(b1, b2)
+    # return (b1[0] - b2[0])**2 + (b1[1] - b2[1])**2 + (b1[2] - b2[2])**2
 
 # This is by far the most expensive step
 combinations = sorted(itertools.combinations(boxes, 2), key=distance)

@@ -7,10 +7,10 @@ for beg, end in ranges:
     end = int(end)
     for i in range(beg, end+1):
         s = str(i)
-        l = len(s)
-        if s[:l//2] == s[l//2:]:
-            p1 += i
         if s in (s+s)[1:-1]:
+            l = len(s)
+            if s[:l // 2] == s[l // 2:]:
+                p1 += i
             p2 += i
 
 print("Part 1:", p1)
