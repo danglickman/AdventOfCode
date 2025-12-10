@@ -34,6 +34,5 @@ for size, (t1,t2) in sizes:
                         fail = True
                         break
         if not fail:
-            max_gr_size = size
-
-print("Part 2: ", max_gr_size)
+            print("Part 2: ", size)
+            break
